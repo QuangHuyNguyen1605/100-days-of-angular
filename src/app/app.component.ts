@@ -31,7 +31,7 @@ export class AppComponent {
   };
   counter = 1;
   navs = ['Active', 'Link 1', 'Link 2'];
-
+  showTab4 = true;
   ngOnInit() {
     //this.nameInput.nativeElement.focus();
     this.toggleComps.changes.subscribe(console.log);

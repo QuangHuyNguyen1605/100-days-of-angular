@@ -20,14 +20,17 @@ export class TabPanelComponent {
   @Input() title: string;
   @ViewChild(TemplateRef, { static: true }) implicitBody: TemplateRef<unknown>;
   @ContentChild(TabContentDirective, { static: true, read: TemplateRef })
-  explicitBody: TabContentDirective;
+  explicitBody: TemplateRef<unknown>;
 
   constructor(private tabGroup: TabGroupComponent) {}
   get panelBody(): TemplateRef<unknown> {
-    return this.implicitBody || this.implicitBody;
+    return this.explicitBody || this.implicitBody;
   }
   ngOnInit() {
     console.log();
     this.tabGroup.addTab(this);
+  }
+  ngOnDestroy() {
+    this.tabGroup.removeTab(this);
   }
 }
